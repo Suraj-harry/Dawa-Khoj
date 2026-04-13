@@ -1,6 +1,6 @@
 // API Configuration and Helper Functions
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://xxxx-5000.app.github.dev';
 
 class MedicineAPI {
     /**
