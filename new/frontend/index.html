@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Alternative Finder - Find Cheaper Generic Medicines</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Dawa Khoj</h1>
+                <p class="tagline">Find Affordable Generic Alternatives</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="prescription.html">Scan Prescription</a>
+                <a href="pharmacy.html">Find Pharmacy</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Save Money on Medicines</h2>
+            <p>Find cheaper generic alternatives with the same active ingredients</p>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="medicineSearch"
+                        placeholder="Search for a medicine (e.g., Dolo, Crocin, Paracetamol)" autocomplete="off">
+                    <button id="searchBtn" class="btn-primary">
+                        Search
+                    </button>
+                </div>
+                <div id="autocomplete" class="autocomplete-suggestions"></div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalMedicines">0</span>
+                    <span class="stat-label">Medicines</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalIngredients">0</span>
+                    <span class="stat-label">Active Ingredients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free to Use</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+        <div class="container">
+            <!-- Original Medicine Info -->
+            <div id="originalMedicine" class="medicine-card original"></div>
+
+            <!-- Alternatives -->
+            <div id="alternatives">
+                <h3>💰 Cheaper Alternatives</h3>
+                <div id="alternativesList" class="alternatives-grid"></div>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>😕 No alternatives found for this medicine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3>Search Medicine</h3>
+                    <p>Enter the name of any medicine you're prescribed</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3>View Alternatives</h3>
+                    <p>See all generic medicines with same active ingredients</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3>Save Money</h3>
+                    <p>Choose the most affordable option and save on healthcare</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MediFinder. All rights reserved.</p>
+            <p class="disclaimer">Always consult your doctor before switching medicines</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

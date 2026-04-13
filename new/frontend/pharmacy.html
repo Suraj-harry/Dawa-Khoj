@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Nearby Pharmacy - MediFinder</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pharmacy-info {
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pharmacy-info:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .pharmacy-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .pharmacy-distance {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .location-btn {
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .location-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .city-search-box {
+            max-width: 500px;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .city-search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .city-search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .city-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            box-shadow: var(--shadow-lg);
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .city-suggestions.active {
+            display: block;
+        }
+
+        .city-suggestion-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .city-suggestion-item:hover {
+            background: var(--bg-light);
+        }
+
+        .loading-map {
+            text-align: center;
+            padding: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Dawa Khoj</h1>
+                <p class="tagline">Find Affordable Generic Alternatives</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="prescription.html">📸 Scan Prescription</a>
+                <a href="pharmacy.html" class="active">📍 Find Pharmacy</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding: 4rem 0; background: white; min-height: 70vh;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 1rem;" id="pageTitle">📍 Find Nearby Pharmacies</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                Enter your city or use your current location
+            </p>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="city-search-box">
+                    <input type="text" id="citySearch" placeholder="Enter your city (e.g., Jaipur, Delhi, Mumbai)"
+                        autocomplete="off">
+                    <div class="city-suggestions" id="citySuggestions"></div>
+                </div>
+                <button class="location-btn" id="findPharmaciesBtn">
+                    <span></span>
+                    <span id="btnText">Find Pharmacies</span>
+                </button>
+            </div>
+
+            <div id="loadingMap" class="loading-map" style="display: none;">
+                <div class="spinner"></div>
+                <p style="margin-top: 1rem; color: var(--text-light);">Loading pharmacies...</p>
+            </div>
+
+            <div id="mapContainer" style="display: none;">
+                <div id="map"></div>
+
+                <div id="pharmacyList" style="margin-top: 2rem;">
+                    <h3>Nearby Pharmacies</h3>
+                    <div id="pharmacies"></div>
+                </div>
+            </div>
+
+            <div id="errorMsg" style="display: none; text-align: center; padding: 2rem; color: var(--danger-color);">
+                <p>Unable to find location. Please try entering your city manually.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MediFinder. All rights reserved.</p>
+            <p class="disclaimer">⚠️ Always consult your doctor before switching medicines</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/pharmacy.js"></script>
+</body>
+
+</html>

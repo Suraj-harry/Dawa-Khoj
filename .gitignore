@@ -1,0 +1,9 @@
+venv/
+new/backend/venv/
+new/backend/data/
+new/uploads/
+*.csv
+*.json
+frontend/node_modules/
+__pycache__/
+*.pyc

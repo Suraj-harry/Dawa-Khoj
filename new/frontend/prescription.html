@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Scanner - MediFinder</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Dawa Khoj</h1>
+                <p class="tagline">Find Affordable Generic Alternatives</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="prescription.html" class="active">Scan Prescription</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Scan Your Prescription</h2>
+
+            <div style="background: var(--bg-light); padding: 2rem; border-radius: 1rem; text-align: center;">
+                <div id="uploadArea"
+                    style="border: 3px dashed var(--border-color); padding: 3rem; border-radius: 1rem; cursor: pointer; transition: all 0.3s;">
+                    <span style="font-size: 4rem;">📄</span>
+                    <h3>Click to Upload Prescription</h3>
+                    <p>or drag and drop</p>
+                    <p style="color: var(--text-light); margin-top: 1rem;">Supported: JPG, PNG, PDF</p>
+                    <input type="file" id="fileInput" accept="image/*,.pdf" style="display: none;">
+                </div>
+
+                <div id="preview" style="margin-top: 2rem; display: none;">
+                    <img id="previewImage" style="max-width: 100%; border-radius: 0.5rem;">
+                </div>
+
+                <div id="results" style="margin-top: 2rem; display: none;">
+                    <h3>Medicines Found:</h3>
+                    <div id="medicinesList" style="text-align: left; margin-top: 1rem;"></div>
+                </div>
+
+                <div id="loading" style="display: none; margin-top: 2rem;">
+                    <div class="spinner"></div>
+                    <p>Processing prescription...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/prescription.js"></script>
+</body>
+
+</html>
